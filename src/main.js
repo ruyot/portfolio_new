@@ -107,14 +107,100 @@ const asciiArt = `                               .:==+#+:.
                 .+===----+++=.   ..+..............::=+++====---=*#.::......:::::::.....:====%%*-=*-.
                  :+===--===+-.    .-*.::::::...:.:::::----:::::=**=.........::.:::.....::::==--=*=. .`
 
-// Create simple layout with just ASCII art
+// ASCII characters for scramble effect
+const ASCII_CHARS = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+// Function to generate random ASCII character
+function randomChar() {
+  return ASCII_CHARS[Math.floor(Math.random() * ASCII_CHARS.length)];
+}
+
+// ASCII art name design
+const asciiName = `.--------'                                      . 
+(_)   /         /                               /  
+     /.-.      /-. .  .-. .-.   .-.   .-.  .-../   
+    /(  |     /   | )/   )   )./.-'_./.-'_(   /    
+ .-/._\`-'-'_.'    |'/   /   ( (__.' (__.'  \`-'-..  
+(_/  \`-                      \`-'                  `;
+
+// Function to scramble text and gradually reveal target (works with multi-line ASCII art)
+function scrambleText(element, targetText, duration = 2500) {
+  const startTime = Date.now();
+  const chars = targetText.split('');
+  let revealed = new Array(chars.length).fill(false);
+
+  const interval = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Gradually reveal characters from left to right
+    const revealIndex = Math.floor(progress * chars.length);
+    for (let i = 0; i < revealIndex; i++) {
+      revealed[i] = true;
+    }
+
+    // Build display text
+    const displayText = chars.map((char, i) => {
+      if (revealed[i]) {
+        return char;
+      }
+      // Preserve newlines and spaces for ASCII art structure
+      return (char === '\n' || char === ' ') ? char : randomChar();
+    }).join('');
+
+    element.textContent = displayText;
+
+    // Stop when complete
+    if (progress >= 1) {
+      clearInterval(interval);
+      element.textContent = targetText;
+    }
+  }, 50);
+}
+
+// Rotating tagline functionality
+function rotateTagline(element, words, interval = 3000) {
+  let currentIndex = 0;
+
+  // Set initial word
+  element.textContent = words[currentIndex];
+
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % words.length;
+    element.textContent = words[currentIndex];
+  }, interval);
+}
+
+// Create simple layout with ASCII art and header
 document.querySelector('#app').innerHTML = `
-  <main class="h-screen w-screen flex items-center justify-start px-8 md:px-16 lg:px-24 overflow-hidden">
+  <main class="h-screen w-screen flex items-center justify-between px-8 md:px-16 lg:px-24 overflow-hidden">
     
-    <!-- ASCII Art -->
+    <!-- ASCII Art Portrait (Left) -->
     <div class="ascii-fade-in">
       <pre class="ascii-art">${asciiArt}</pre>
     </div>
     
+    <!-- ASCII Header (Top Right) -->
+    <div class="ascii-header">
+      <pre class="ascii-name" id="ascii-name">Tahmeed</pre>
+      <div class="tagline-container">
+        <span class="tagline-prefix">I'm a </span>
+        <span class="tagline-word" id="tagline-word">builder</span>
+      </div>
+    </div>
+    
   </main>
 `
+
+// Initialize animations
+const nameElement = document.getElementById('ascii-name');
+const taglineElement = document.getElementById('tagline-word');
+
+// Start scramble animation for ASCII art name
+scrambleText(nameElement, asciiName, 3000);
+
+// Start rotating tagline after a short delay
+setTimeout(() => {
+  const roles = ['builder', 'software engineer', 'entrepreneur', 'ML Engineer'];
+  rotateTagline(taglineElement, roles, 3000);
+}, 2500);

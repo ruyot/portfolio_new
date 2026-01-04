@@ -92,3 +92,49 @@ body {
         opacity: 1;
     }
 }
+
+/* ASCII Header (Top Right) */
+.ascii-header {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    text-align: right;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.ascii-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #fff;
+    margin: 0;
+    white-space: pre;
+}
+
+.tagline-container {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    color: #aaa;
+    margin-top: 0.5rem;
+}
+
+.tagline-prefix {
+    color: #888;
+}
+
+.tagline-word {
+    color: #fff;
+    font-weight: 500;
+    display: inline-block;
+    min-width: 12ch;
+    text-align: left;
+    transition: opacity 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .ascii-header {
+        top: 1rem;
+        right: 1rem;
+    }
+}
