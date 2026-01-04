@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+/* Global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* ASCII art container */
+.ascii-art {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.35rem, 0.8vw, 0.6rem);
+    line-height: 1.15;
+    letter-spacing: 0.05em;
+    white-space: pre;
+    color: #fff;
+}
+
+/* Cursive signature */
+.signature {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 600;
+    color: #fff;
+}
+
+/* Signature animation - draw in effect */
+.signature-container {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.signature-text {
+    display: inline-block;
+    animation: slideIn 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 0.5s;
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Underline animation */
+.signature-underline {
+    width: 0;
+    height: 2px;
+    background: #fff;
+    animation: drawLine 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 1.8s;
+}
+
+@keyframes drawLine {
+    to {
+        width: 100%;
+    }
+}
+
+/* Fade in for ASCII art */
+.ascii-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
