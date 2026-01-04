@@ -133,9 +133,59 @@ body {
     transition: opacity 0.3s ease;
 }
 
+/* Social Icons (Bottom Right) */
+.social-icons {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s;
+    opacity: 0;
+}
+
+.social-icon {
+    text-decoration: none;
+    display: block;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.social-icon:hover {
+    opacity: 1;
+    transform: translateX(-5px);
+}
+
+.social-logo {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.15rem, 0.3vw, 0.25rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: #fff;
+    margin: 0;
+    white-space: pre;
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover .social-logo {
+    color: #00ff88;
+}
+
 @media (max-width: 768px) {
     .ascii-header {
         top: 1rem;
         right: 1rem;
+    }
+
+    .social-icons {
+        bottom: 1rem;
+        right: 1rem;
+        gap: 1rem;
+    }
+
+    .social-logo {
+        font-size: clamp(0.12rem, 0.25vw, 0.2rem);
     }
 }
