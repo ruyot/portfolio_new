@@ -116,18 +116,35 @@ function randomChar() {
 }
 
 // ASCII art name design
-const asciiName = `.--------'                                      . 
-(_)   /         /                               /  
-     /.-.      /-. .  .-. .-.   .-.   .-.  .-../   
-    /(  |     /   | )/   )   )./.-'_./.-'_(   /    
- .-/._\`-'-'_.'    |'/   /   ( (__.' (__.'  \`-'-..  
-(_/  \`-                      \`-'                  `;
+const asciiName = `    .....                                                                               ..       
+ .H8888888h.  ~-.                .uef^"                                               dF         
+ 888888888888x  \`>             :d88E          ..    .     :                          '88bu.      
+X~     \`?888888hx~       u     \`888E        .888: x888  x888.       .u         .u    '*88888bu   
+'      x8.^"*88*"     us888u.   888E .z8k  ~\`8888~'888X\`?888f\`   ud8888.    ud8888.    ^"*8888N  
+ \`-:- X8888x       .@88 "8888"  888E~?888L   X888  888X '888>  :888'8888. :888'8888.  beWE "888L 
+      488888>      9888  9888   888E  888E   X888  888X '888>  d888 '88%" d888 '88%"  888E  888E 
+    .. \`"88*       9888  9888   888E  888E   X888  888X '888>  8888.+"    8888.+"     888E  888E 
+  x88888nX"      . 9888  9888   888E  888E   X888  888X '888>  8888L      8888L       888E  888F 
+ !"*8888888n..  :  9888  9888   888E  888E  "*88%""*88" '888!\` '8888c. .+ '8888c. .+ .888N..888  
+'    "*88888888*   "888*""888" m888N= 888>    \`~    "    \`"\`    "88888%    "88888%    \`"888*""   
+        ^"***"\`     ^Y"   ^Y'   \`Y"   888                         "YP'       "YP'        ""      
+                                     J88"                                                        
+                                     @%                                                          
+                                   :"                                                            `;
 
 // Function to scramble text and gradually reveal target (works with multi-line ASCII art)
 function scrambleText(element, targetText, duration = 2500) {
   const startTime = Date.now();
   const chars = targetText.split('');
   let revealed = new Array(chars.length).fill(false);
+
+  // Extract unique characters from the target text (excluding spaces and newlines)
+  const uniqueChars = [...new Set(targetText.split('').filter(c => c !== ' ' && c !== '\n'))];
+
+  // Function to get random character from the name's character set
+  function getRandomChar() {
+    return uniqueChars[Math.floor(Math.random() * uniqueChars.length)];
+  }
 
   const interval = setInterval(() => {
     const elapsed = Date.now() - startTime;
@@ -145,7 +162,7 @@ function scrambleText(element, targetText, duration = 2500) {
         return char;
       }
       // Preserve newlines and spaces for ASCII art structure
-      return (char === '\n' || char === ' ') ? char : randomChar();
+      return (char === '\n' || char === ' ') ? char : getRandomChar();
     }).join('');
 
     element.textContent = displayText;
