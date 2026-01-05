@@ -136,11 +136,12 @@ body {
 /* Social Icons (Bottom Right) */
 .social-icons {
     position: absolute;
-    bottom: 2rem;
-    right: 2rem;
+    bottom: 1rem;
+    right: 1rem;
     display: flex;
     flex-direction: row;
-    gap: 1.5rem;
+    align-items: flex-end;
+    gap: 0.4rem;
     animation: fadeIn 1s ease-out forwards;
     animation-delay: 0.5s;
     opacity: 0;
@@ -155,18 +156,24 @@ body {
 
 .social-icon:hover {
     opacity: 1;
-    transform: translateX(-5px);
+    transform: translateY(-3px);
 }
 
 .social-logo {
     font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(0.15rem, 0.3vw, 0.25rem);
+    font-size: clamp(0.18rem, 0.35vw, 0.28rem);
     line-height: 1.1;
-    letter-spacing: 0.02em;
+    letter-spacing: 0;
     color: #fff;
     margin: 0;
     white-space: pre;
     transition: color 0.3s ease;
+}
+
+/* Small logo size for Mail and LinkedIn */
+.social-logo-small {
+    font-size: clamp(0.09rem, 0.175vw, 0.14rem);
+    line-height: 0.8;
 }
 
 .social-icon:hover .social-logo {
