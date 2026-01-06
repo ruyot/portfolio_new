@@ -113,24 +113,84 @@ body {
     white-space: pre;
 }
 
-.tagline-container {
+.experience-container {
     font-family: 'JetBrains Mono', monospace;
-    font-size: clamp(0.9rem, 1.5vw, 1.2rem);
+    font-size: clamp(0.7rem, 1.2vw, 1rem);
     color: #aaa;
-    margin-top: 0.5rem;
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1.5rem;
 }
 
-.tagline-prefix {
+.experience-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.experience-line {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.experience-group:hover .experience-line .experience-text {
+    color: #00ff88;
+}
+
+.experience-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
     color: #888;
+    font-size: 0.85em;
+    margin-right: 36px;
+    /* Align with text, skipping logo space */
+    transition: all 0.4s ease;
+    text-align: right;
 }
 
-.tagline-word {
-    color: #fff;
-    font-weight: 500;
+.experience-group:hover .experience-details {
+    max-height: 2em;
+    opacity: 1;
+    margin-top: 0.3rem;
+}
+
+.experience-text {
+    text-align: right;
+    color: #ccc;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.logo-placeholder {
+    width: 24px;
+    height: 24px;
+    border: 1px dashed #555;
+    border-radius: 4px;
     display: inline-block;
-    min-width: 12ch;
-    text-align: left;
-    transition: opacity 0.3s ease;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+.projects-btn {
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.9em;
+    border: 1px solid #444;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    cursor: default;
+    transition: all 0.3s ease;
+}
+
+.projects-btn:hover {
+    border-color: #666;
+    color: #ccc;
 }
 
 /* Social Icons (Bottom Right) */

@@ -176,18 +176,7 @@ function scrambleText(element, targetText, duration = 2500) {
   }, 50);
 }
 
-// Rotating tagline functionality
-function rotateTagline(element, words, interval = 3000) {
-  let currentIndex = 0;
 
-  // Set initial word
-  element.textContent = words[currentIndex];
-
-  setInterval(() => {
-    currentIndex = (currentIndex + 1) % words.length;
-    element.textContent = words[currentIndex];
-  }, interval);
-}
 
 // ASCII art logos for social media
 const githubLogo = `
@@ -306,9 +295,24 @@ document.querySelector('#app').innerHTML = `
     <!-- ASCII Header (Top Right) -->
     <div class="ascii-header">
       <pre class="ascii-name" id="ascii-name">Tahmeed</pre>
-      <div class="tagline-container">
-        <span class="tagline-prefix">I'm a </span>
-        <span class="tagline-word" id="tagline-word">builder</span>
+      <div class="experience-container">
+        <div class="experience-group">
+          <div class="experience-line">
+            <span class="experience-text">Current Software Engineer Intern @ Shopify</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="experience-details">Continuous Deployment Team</div>
+        </div>
+
+        <div class="experience-group">
+          <div class="experience-line">
+            <span class="experience-text">Prev Software @ Ollon</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="experience-details">AI, Automation and QA</div>
+        </div>
+
+        <div class="projects-btn">Projects</div>
       </div>
     </div>
     
@@ -330,13 +334,6 @@ document.querySelector('#app').innerHTML = `
 
 // Initialize animations
 const nameElement = document.getElementById('ascii-name');
-const taglineElement = document.getElementById('tagline-word');
 
 // Start scramble animation for ASCII art name
 scrambleText(nameElement, asciiName, 3000);
-
-// Start rotating tagline after a short delay
-setTimeout(() => {
-  const roles = ['builder', 'software engineer', 'entrepreneur', 'ML Engineer'];
-  rotateTagline(taglineElement, roles, 3000);
-}, 2500);
