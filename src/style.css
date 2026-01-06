@@ -168,13 +168,20 @@ body {
 }
 
 .logo-placeholder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     width: 24px;
     height: 24px;
-    border: 1px dashed #555;
-    border-radius: 4px;
-    display: inline-block;
-    opacity: 0.5;
+    opacity: 0.6;
     flex-shrink: 0;
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+}
+
+.logo-placeholder::before {
+    content: '<';
 }
 
 .projects-btn {
