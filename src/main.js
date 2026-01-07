@@ -125,9 +125,9 @@ X~     \`?888888hx~       u     \`888E        .888: x888  x888.       .u        
  \`-:- X8888x       .@88 "8888"  888E~?888L   X888  888X '888>  :888'8888. :888'8888.  beWE "888L 
       488888>      9888  9888   888E  888E   X888  888X '888>  d888 '88%" d888 '88%"  888E  888E 
     .. \`"88*       9888  9888   888E  888E   X888  888X '888>  8888.+"    8888.+"     888E  888E 
-  x88888nX"      . 9888  9888   888E  888E   X888  888X '888>  8888L      8888L       888E  888F 
- !"*8888888n..  :  9888  9888   888E  888E  "*88%""*88" '888!\` '8888c. .+ '8888c. .+ .888N..888  
-'    "*88888888*   "888*""888" m888N= 888>    \`~    "    \`"\`    "88888%    "88888%    \`"888*""   
+  x88888nX"        9888  9888   888E  888E   X888  888X '888>  8888L      8888L       888E  888F 
+ !"*888888.        9888  9888   888E  888E  "*88%""*88" '888!\` '8888c. .+ '8888c. .+ .888N..888  
+'    "*8888.       "888*""888" m888N= 888>    \`~    "    \`"\`    "88888%    "88888%    \`"888*""   
         ^"***"\`     ^Y"   ^Y'   \`Y"   888                         "YP'       "YP'        ""      
                                      J88"                                                        
                                      @%                                                          
@@ -283,22 +283,33 @@ const mailLogo = `
 `;
 
 
-// Create simple layout with ASCII art and header
-document.querySelector('#app').innerHTML = `
-  <main class="h-screen w-screen flex items-start justify-between px-8 md:px-16 lg:px-24 pt-16 overflow-hidden relative">
-    
-    <!-- ASCII Art Portrait (Left) -->
-    <div class="ascii-fade-in">
-      <pre class="ascii-art">${asciiArt}</pre>
-    </div>
-    
-    <!-- ASCII Header (Top Right) -->
-    <div class="ascii-header">
-      <pre class="ascii-name" id="ascii-name">Tahmeed</pre>
-      <div class="experience-container">
+// ASCII Art Taglines
+const tag1 = `
+'      .oooooo.                                                           .         .oooooo..o            .o88o.     .                                                      oooooooooooo                         o8o                                                ooooo                 .                                         .oooooo.        .oooooo..o oooo                              o8o   .o88o.             
+'     d8P'  \`Y8b                                                        .o8        d8P'    \`Y8            888 \`"   .o8                                                      \`888'     \`8                         \`"'                                                \`888'               .o8                                        d'     \`b       d8P'    \`Y8 \`888                              \`"'   888 \`"             
+'    888          oooo  oooo  oooo d8b oooo d8b  .ooooo.  ooo. .oo.   .o888oo      Y88bo.       .ooooo.  o888oo  .o888oo oooo oooo    ooo  .oooo.   oooo d8b  .ooooo.        888         ooo. .oo.    .oooooooo oooo  ooo. .oo.    .ooooo.   .ooooo.  oooo d8b       888  ooo. .oo.   .o888oo  .ooooo.  oooo d8b ooo. .oo.        d' .d"bd  8      Y88bo.       888 .oo.    .ooooo.  oo.ooooo.  oooo  o888oo  oooo    ooo 
+'    888          \`888  \`888  \`888""8P \`888""8P d88' \`88b \`888P"Y88b    888         \`"Y8888o.  d88' \`88b  888      888    \`88. \`88.  .8'  \`P  )88b  \`888""8P d88' \`88b       888oooo8    \`888P"Y88b  888' \`88b  \`888  \`888P"Y88b  d88' \`88b d88' \`88b \`888""8P       888  \`888P"Y88b    888   d88' \`88b \`888""8P \`888P"Y88b       8  8. 8  .d       \`"Y8888o.   888P"Y88b  d88' \`88b  888' \`88b \`888   888     \`88.  .8'  
+'    888           888   888   888      888     888ooo888  888   888    888             \`"Y88b 888   888  888      888     \`88..]88..8'    .oP"888   888     888ooo888       888    "     888   888  888   888   888   888   888  888ooo888 888ooo888  888           888   888   888    888   888ooo888  888      888   888       Y.  YoP"b'            \`"Y88b  888   888  888   888  888   888  888   888      \`88..8'   
+'    \`88b    ooo   888   888   888      888     888    .o  888   888    888 .      oo     .d8P 888   888  888      888 .    \`888'\`888'    d8(  888   888     888    .o       888       o  888   888  \`88bod8P'   888   888   888  888    .o 888    .o  888           888   888   888    888 . 888    .o  888      888   888        8.      .8      oo     .d8P  888   888  888   888  888   888  888   888       \`888'    
+'     \`Y8bood8P'   \`V88V"V8P' d888b    d888b    \`Y8bod8P' o888o o888o   "888"      8""88888P'  \`Y8bod8P' o888o     "888"     \`8'  \`8'     \`Y888""8o d888b    \`Y8bod8P'      o888ooooood8 o888o o888o \`8oooooo.  o888o o888o o888o \`Y8bod8P' \`Y8bod8P' d888b         o888o o888o o888o   "888" \`Y8bod8P' d888b    o888o o888o        YooooooP       8""88888P'  o888o o888o \`Y8bod8P'  888bod8P' o888o o888o       .8'     
+'                                                                                                                                                                                                    d"     YD                                                                                                                                                                        888                     .o..P'      
+'                                                                                                                                                                                                    "Y88888P'                                                                                                                                                                       o888o                    \`Y8P'                                                                                                                                                                                                                                                                                                                                                                                                                            .
+`;
+const tag2 = `
+'    ooooooooo.                                         .oooooo.         .oooooo.   oooo  oooo                        
+'    \`888   \`Y88.                                      d'     \`b        d8P'  \`Y8b  \`888  \`888                        
+'     888   .d88' oooo d8b  .ooooo.  oooo    ooo      d' .d"bd  8      888      888  888   888   .ooooo.  ooo. .oo.   
+'     888ooo88P'  \`888""8P d88' \`88b  \`88.  .8'       8  8. 8  .d      888      888  888   888  d88' \`88b \`888P"Y88b  
+'     888          888     888ooo888   \`88..8'        Y.  YoP"b'       888      888  888   888  888   888  888   888  
+'     888          888     888    .o    \`888'          8.      .8      \`88b    d88'  888   888  888   888  888   888  
+'    o888o        d888b    \`Y8bod8P'     \`8'            YooooooP        \`Y8bood8P'  o888o o888o \`Y8bod8P' o888o o888o                                                                                                                                                                                                                                                                                                                                                 
+`;
+
+// Content definitions
+const experienceContent = `
         <div class="experience-group">
           <div class="experience-line">
-            <span class="experience-text">Current Software Engineer Intern @ Shopify</span>
+            <pre class="experience-text experience-ascii">${tag1}</pre>
             <div class="logo-placeholder"></div>
           </div>
           <div class="experience-details">Continuous Deployment Team</div>
@@ -306,13 +317,65 @@ document.querySelector('#app').innerHTML = `
 
         <div class="experience-group">
           <div class="experience-line">
-            <span class="experience-text">Prev Software @ Ollon</span>
+            <pre class="experience-text experience-ascii">${tag2}</pre>
             <div class="logo-placeholder"></div>
           </div>
           <div class="experience-details">AI, Automation and QA</div>
         </div>
+`;
 
-        <div class="projects-btn">Projects</div>
+const projectsContent = `
+        <div class="project-item">
+            <div class="project-header">
+                <span class="project-title">Truthful - AI powered Cybersecurity</span>
+                <div class="logo-placeholder"></div>
+            </div>
+            <div class="project-details">
+                <p class="project-desc">Built my own ML model to detect Real vs AI content from scratch. Trained on 100k+ frames on Google Cloud and deployed on render.</p>
+                <p class="project-stack">Python · PyTorch · CUDA · NumPy</p>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="project-header">
+                <span class="project-title">GameShare - Decentralized cloud share platform</span>
+                <div class="logo-placeholder"></div>
+            </div>
+            <div class="project-details">
+                <p class="project-desc">Building a decentralized marketplace where users can earn money for hosting their hardware via cloud and others can play via the same systems creating a low commitment, low cost, and accessible entertainment experience for everyone. Over 100+ users in beta testing.</p>
+                <p class="project-stack">Python · OpenCV · YOLO · Docker</p>
+            </div>
+        </div>
+
+        <div class="project-item">
+            <div class="project-header">
+                <span class="project-title">MinML - Semantic compression systems</span>
+                <div class="logo-placeholder"></div>
+            </div>
+            <div class="project-details">
+                <p class="project-desc">Built a local, cross-provider token cache with safe prompt compression—cuts LLM cost while preserving meaning - private by default and model-agnostic.</p>
+                <p class="project-stack">Rust (PyO3) · Python 3.13 · Transformers · PyTorch</p>
+            </div>
+        </div>
+`;
+
+// Create simple layout with ASCII art and header
+document.querySelector('#app').innerHTML = `
+  <main class="h-screen w-screen flex items-start justify-between px-8 md:px-16 lg:px-24 pt-16 overflow-hidden relative">
+    
+    <!-- ASCII Art Portrait (Left) -->
+    <div class="ascii-fade-in">
+      <pre class="ascii-art" id="ascii-portrait">${asciiArt}</pre>
+    </div>
+    
+    <!-- ASCII Header (Top Right) -->
+    <div class="ascii-header">
+      <pre class="ascii-name" id="ascii-name">Tahmeed</pre>
+      <div class="experience-container">
+        <div id="content-list" class="fade-in">
+            ${experienceContent}
+        </div>
+        <div class="projects-btn" id="projects-btn">Projects</div>
       </div>
     </div>
     
@@ -332,8 +395,35 @@ document.querySelector('#app').innerHTML = `
   </main>
 `
 
+// Toggle Logic
+const contentList = document.getElementById('content-list');
+const toggleBtn = document.getElementById('projects-btn');
+let isProjectsView = false;
+
+toggleBtn.addEventListener('click', () => {
+  contentList.classList.remove('fade-in');
+  contentList.classList.add('fade-out');
+
+  setTimeout(() => {
+    isProjectsView = !isProjectsView;
+    if (isProjectsView) {
+      contentList.innerHTML = projectsContent;
+      toggleBtn.textContent = "Experience";
+    } else {
+      contentList.innerHTML = experienceContent;
+      toggleBtn.textContent = "Projects";
+    }
+    contentList.classList.remove('fade-out');
+    contentList.classList.add('fade-in');
+  }, 300); // Wait for fade out
+});
+
 // Initialize animations
 const nameElement = document.getElementById('ascii-name');
+const portraitElement = document.getElementById('ascii-portrait');
 
 // Start scramble animation for ASCII art name
 scrambleText(nameElement, asciiName, 3000);
+
+// Start scramble animation for ASCII art portrait
+scramblePortrait(portraitElement, asciiArt, 3000);
