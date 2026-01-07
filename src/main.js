@@ -309,7 +309,7 @@ const tag2 = `
 const experienceContent = `
         <div class="experience-group">
           <div class="experience-line">
-            <pre class="experience-text experience-ascii">${tag1}</pre>
+            <span class="experience-text">Current Software Engineer Intern @ Shopify</span>
             <div class="logo-placeholder"></div>
           </div>
           <div class="experience-details">Continuous Deployment Team</div>
@@ -317,7 +317,7 @@ const experienceContent = `
 
         <div class="experience-group">
           <div class="experience-line">
-            <pre class="experience-text experience-ascii">${tag2}</pre>
+            <span class="experience-text">Prev Software @ Ollon</span>
             <div class="logo-placeholder"></div>
           </div>
           <div class="experience-details">AI, Automation and QA</div>
@@ -342,8 +342,8 @@ const projectsContent = `
                 <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
-                <p class="project-desc">Building a decentralized marketplace where users can earn money for hosting their hardware via cloud and others can play via the same systems creating a low commitment, low cost, and accessible entertainment experience for everyone. Over 100+ users in beta testing.</p>
-                <p class="project-stack">Python · OpenCV · YOLO · Docker</p>
+                <p class="project-desc">Decentralized marketplace for cloud gaming via peer hardware hosting. Low cost, accessible entertainment for everyone.</p>
+                <p class="project-stack">Rust · Python · Docker · WebRTC</p>
             </div>
         </div>
 
@@ -353,7 +353,7 @@ const projectsContent = `
                 <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
-                <p class="project-desc">Built a local, cross-provider token cache with safe prompt compression—cuts LLM cost while preserving meaning - private by default and model-agnostic.</p>
+                <p class="project-desc">Local, cross-provider token cache with safe prompt compression. Cuts LLM cost while preserving meaning.</p>
                 <p class="project-stack">Rust (PyO3) · Python 3.13 · Transformers · PyTorch</p>
             </div>
         </div>
