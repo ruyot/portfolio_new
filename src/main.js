@@ -133,6 +133,34 @@ X~     \`?888888hx~       u     \`888E        .888: x888  x888.       .u        
                                      @%                                                          
                                    :"                                                            `;
 
+// Function to type command like terminal
+function typeCommand(element, text, callback) {
+  element.innerHTML = ''; // Clear text
+  element.style.borderColor = "transparent"; // Make it look like terminal input
+  element.style.textAlign = "left"; // Align left like terminal
+  let i = 0;
+
+  // Create cursor element
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  element.appendChild(cursor);
+
+  function typeChar() {
+    if (i < text.length) {
+      cursor.before(text.charAt(i));
+      i++;
+      setTimeout(typeChar, 30 + Math.random() * 30); // Random typing speed
+    } else {
+      setTimeout(() => {
+        element.removeChild(cursor); // Remove cursor when done
+        if (callback) callback();
+      }, 500); // Wait a bit after typing finishes
+    }
+  }
+
+  typeChar();
+}
+
 // Function to scramble text and gradually reveal target (works with multi-line ASCII art)
 function scrambleText(element, targetText, duration = 2500) {
   const startTime = Date.now();
@@ -401,21 +429,41 @@ const toggleBtn = document.getElementById('projects-btn');
 let isProjectsView = false;
 
 toggleBtn.addEventListener('click', () => {
-  contentList.classList.remove('fade-in');
-  contentList.classList.add('fade-out');
+  if (toggleBtn.classList.contains('typing')) return; // Prevent clicks while typing
+  toggleBtn.classList.add('typing');
 
-  setTimeout(() => {
-    isProjectsView = !isProjectsView;
-    if (isProjectsView) {
-      contentList.innerHTML = projectsContent;
-      toggleBtn.textContent = "Experience";
-    } else {
-      contentList.innerHTML = experienceContent;
-      toggleBtn.textContent = "Projects";
-    }
-    contentList.classList.remove('fade-out');
-    contentList.classList.add('fade-in');
-  }, 300); // Wait for fade out
+  const command = isProjectsView ? "cd /tahmeedt/profile/experience" : "cd /tahmeedt/profile/projects";
+
+  typeCommand(toggleBtn, command, () => {
+    // After typing finishes...
+
+    // 1. Fade out content
+    contentList.classList.remove('fade-in');
+    contentList.classList.add('fade-out');
+
+    setTimeout(() => {
+      // 2. toggle state
+      isProjectsView = !isProjectsView;
+
+      // 3. Swap content
+      if (isProjectsView) {
+        contentList.innerHTML = projectsContent;
+      } else {
+        contentList.innerHTML = experienceContent;
+      }
+
+      // 4. Fade in content
+      contentList.classList.remove('fade-out');
+      contentList.classList.add('fade-in');
+
+      // 5. Reset button style and text
+      toggleBtn.style.borderColor = "";
+      toggleBtn.style.textAlign = "";
+      toggleBtn.textContent = isProjectsView ? "Experience" : "Projects";
+      toggleBtn.classList.remove('typing');
+
+    }, 300); // Wait for fade out
+  });
 });
 
 // Initialize animations

@@ -216,16 +216,45 @@ body {
     margin-top: 0.5rem;
     color: #888;
     font-size: 0.9em;
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.9em;
     border: 1px solid #444;
     padding: 0.4rem 1rem;
     border-radius: 2rem;
     cursor: default;
     transition: all 0.3s ease;
+    min-width: 120px;
+    /* Prevent jitter during typing */
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .projects-btn:hover {
     border-color: #666;
     color: #ccc;
+}
+
+.cursor {
+    display: inline-block;
+    width: 6px;
+    height: 1.2em;
+    background-color: #00ff88;
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 
 /* Projects Styles */
