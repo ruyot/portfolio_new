@@ -420,49 +420,58 @@ document.querySelector('#app').innerHTML = `
       </a>
     </div>
     
+    <div id="terminal-overlay"></div>
   </main>
 `
 
 // Toggle Logic
 const contentList = document.getElementById('content-list');
 const toggleBtn = document.getElementById('projects-btn');
+const terminalOverlay = document.getElementById('terminal-overlay');
 let isProjectsView = false;
 
 toggleBtn.addEventListener('click', () => {
-  if (toggleBtn.classList.contains('typing')) return; // Prevent clicks while typing
+  if (toggleBtn.classList.contains('typing')) return; // Prevent clicks while active
   toggleBtn.classList.add('typing');
+
+  // Show overlay
+  terminalOverlay.style.display = 'block';
+  terminalOverlay.innerHTML = '';
 
   const command = isProjectsView ? "cd /tahmeedt/profile/experience" : "cd /tahmeedt/profile/projects";
 
-  typeCommand(toggleBtn, command, () => {
-    // After typing finishes...
-
-    // 1. Fade out content
-    contentList.classList.remove('fade-in');
-    contentList.classList.add('fade-out');
-
+  typeCommand(terminalOverlay, command, () => {
+    // After typing finishes... wait 1.5s
     setTimeout(() => {
-      // 2. toggle state
-      isProjectsView = !isProjectsView;
+      // 1. Hide overlay
+      terminalOverlay.style.display = 'none';
+      terminalOverlay.innerHTML = '';
 
-      // 3. Swap content
-      if (isProjectsView) {
-        contentList.innerHTML = projectsContent;
-      } else {
-        contentList.innerHTML = experienceContent;
-      }
+      // 2. Fade out content
+      contentList.classList.remove('fade-in');
+      contentList.classList.add('fade-out');
 
-      // 4. Fade in content
-      contentList.classList.remove('fade-out');
-      contentList.classList.add('fade-in');
+      setTimeout(() => {
+        // 3. toggle state
+        isProjectsView = !isProjectsView;
 
-      // 5. Reset button style and text
-      toggleBtn.style.borderColor = "";
-      toggleBtn.style.textAlign = "";
-      toggleBtn.textContent = isProjectsView ? "Experience" : "Projects";
-      toggleBtn.classList.remove('typing');
+        // 4. Swap content
+        if (isProjectsView) {
+          contentList.innerHTML = projectsContent;
+        } else {
+          contentList.innerHTML = experienceContent;
+        }
 
-    }, 300); // Wait for fade out
+        // 5. Fade in content
+        contentList.classList.remove('fade-out');
+        contentList.classList.add('fade-in');
+
+        // 6. Reset button text (no typing on button anymore)
+        toggleBtn.textContent = isProjectsView ? "Experience" : "Projects";
+        toggleBtn.classList.remove('typing');
+
+      }, 300); // Wait for fade out
+    }, 1500); // Wait 1.5s viewing command
   });
 });
 

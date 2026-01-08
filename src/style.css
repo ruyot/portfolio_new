@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+::selection {
+    background-color: #00ff88;
+    color: #000;
+}
+
 body {
     background: #000;
     color: #fff;
@@ -216,16 +221,12 @@ body {
     margin-top: 0.5rem;
     color: #888;
     font-size: 0.9em;
-    margin-top: 0.5rem;
-    color: #888;
-    font-size: 0.9em;
     border: 1px solid #444;
     padding: 0.4rem 1rem;
     border-radius: 2rem;
     cursor: default;
     transition: all 0.3s ease;
     min-width: 120px;
-    /* Prevent jitter during typing */
     text-align: center;
     font-family: 'JetBrains Mono', monospace;
 }
@@ -255,6 +256,26 @@ body {
     50% {
         opacity: 0;
     }
+}
+
+#terminal-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    color: #00ff88;
+    z-index: 1000;
+    pointer-events: none;
+    display: none;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+#terminal-overlay .cursor {
+    background-color: #fff;
+    height: 1em;
+    width: 10px;
 }
 
 /* Projects Styles */
