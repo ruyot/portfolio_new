@@ -398,13 +398,13 @@ document.querySelector('#app').innerHTML = `
     
     <!-- Social Icons (Bottom Right) -->
     <div class="social-icons">
-      <a href="mailto:your.email@example.com" class="social-icon social-icon-small">
+      <a href="mailto:tabeeb700@gmail.com" class="social-icon social-icon-small">
         <pre class="social-logo social-logo-small">${mailLogo}</pre>
       </a>
-      <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon">
+      <a href="https://github.com/ruyot" target="_blank" rel="noopener noreferrer" class="social-icon">
         <pre class="social-logo">${githubLogo}</pre>
       </a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-small">
+      <a href="https://www.linkedin.com/feed/" target="_blank" rel="noopener noreferrer" class="social-icon social-icon-small">
         <pre class="social-logo social-logo-small">${linkedinLogo}</pre>
       </a>
     </div>
