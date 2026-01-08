@@ -136,8 +136,6 @@ X~     \`?888888hx~       u     \`888E        .888: x888  x888.       .u        
 // Function to type command like terminal
 function typeCommand(element, text, callback) {
   element.innerHTML = ''; // Clear text
-  element.style.borderColor = "transparent"; // Make it look like terminal input
-  element.style.textAlign = "left"; // Align left like terminal
   let i = 0;
 
   // Create cursor element
@@ -154,7 +152,7 @@ function typeCommand(element, text, callback) {
       setTimeout(() => {
         element.removeChild(cursor); // Remove cursor when done
         if (callback) callback();
-      }, 500); // Wait a bit after typing finishes
+      }, 100); // Quick finish
     }
   }
 
@@ -333,60 +331,6 @@ const tag2 = `
 '    o888o        d888b    \`Y8bod8P'     \`8'            YooooooP        \`Y8bood8P'  o888o o888o \`Y8bod8P' o888o o888o                                                                                                                                                                                                                                                                                                                                                 
 `;
 
-// Content definitions
-const experienceContent = `
-        <div class="experience-group">
-          <div class="experience-line">
-            <span class="experience-text">Current Software Engineer Intern @ Shopify</span>
-            <div class="logo-placeholder"></div>
-          </div>
-          <div class="experience-details">Continuous Deployment Team</div>
-        </div>
-
-        <div class="experience-group">
-          <div class="experience-line">
-            <span class="experience-text">Prev Software @ Ollon</span>
-            <div class="logo-placeholder"></div>
-          </div>
-          <div class="experience-details">AI, Automation and QA</div>
-        </div>
-`;
-
-const projectsContent = `
-        <div class="project-item">
-            <div class="project-header">
-                <span class="project-title">Truthful - AI powered Cybersecurity</span>
-                <div class="logo-placeholder"></div>
-            </div>
-            <div class="project-details">
-                <p class="project-desc">Built my own ML model to detect Real vs AI content from scratch. Trained on 100k+ frames on Google Cloud and deployed on render.</p>
-                <p class="project-stack">Python · PyTorch · CUDA · NumPy</p>
-            </div>
-        </div>
-
-        <div class="project-item">
-            <div class="project-header">
-                <span class="project-title">GameShare - Decentralized cloud share platform</span>
-                <div class="logo-placeholder"></div>
-            </div>
-            <div class="project-details">
-                <p class="project-desc">Decentralized marketplace for cloud gaming via peer hardware hosting. Low cost, accessible entertainment for everyone.</p>
-                <p class="project-stack">Rust · Python · Docker · WebRTC</p>
-            </div>
-        </div>
-
-        <div class="project-item">
-            <div class="project-header">
-                <span class="project-title">MinML - Semantic compression systems</span>
-                <div class="logo-placeholder"></div>
-            </div>
-            <div class="project-details">
-                <p class="project-desc">Local, cross-provider token cache with safe prompt compression. Cuts LLM cost while preserving meaning.</p>
-                <p class="project-stack">Rust (PyO3) · Python 3.13 · Transformers · PyTorch</p>
-            </div>
-        </div>
-`;
-
 // Create simple layout with ASCII art and header
 document.querySelector('#app').innerHTML = `
   <main class="h-screen w-screen flex items-start justify-between px-8 md:px-16 lg:px-24 pt-16 overflow-hidden relative">
@@ -400,8 +344,53 @@ document.querySelector('#app').innerHTML = `
     <div class="ascii-header">
       <pre class="ascii-name" id="ascii-name">Tahmeed</pre>
       <div class="experience-container">
-        <div id="content-list" class="fade-in">
-            ${experienceContent}
+        <div id="experience-content" class="content-view">
+          <div class="experience-group">
+            <div class="experience-line">
+              <span class="experience-text">Current Software Engineer Intern @ Shopify</span>
+              <div class="logo-placeholder"></div>
+            </div>
+            <div class="experience-details">Continuous Deployment Team</div>
+          </div>
+          <div class="experience-group">
+            <div class="experience-line">
+              <span class="experience-text">Prev Software @ Ollon</span>
+              <div class="logo-placeholder"></div>
+            </div>
+            <div class="experience-details">AI, Automation and QA</div>
+          </div>
+        </div>
+        <div id="projects-content" class="content-view" style="display: none;">
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">Truthful - AI powered Cybersecurity</span>
+              <div class="logo-placeholder"></div>
+            </div>
+            <div class="project-details">
+              <p class="project-desc">Built my own ML model to detect Real vs AI content from scratch. Trained on 100k+ frames on Google Cloud and deployed on render.</p>
+              <p class="project-stack">Python · PyTorch · CUDA · NumPy</p>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">GameShare - Decentralized cloud share platform</span>
+              <div class="logo-placeholder"></div>
+            </div>
+            <div class="project-details">
+              <p class="project-desc">Decentralized marketplace for cloud gaming via peer hardware hosting. Low cost, accessible entertainment for everyone.</p>
+              <p class="project-stack">Rust · Python · Docker · WebRTC</p>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">MinML - Semantic compression systems</span>
+              <div class="logo-placeholder"></div>
+            </div>
+            <div class="project-details">
+              <p class="project-desc">Local, cross-provider token cache with safe prompt compression. Cuts LLM cost while preserving meaning.</p>
+              <p class="project-stack">Rust (PyO3) · Python 3.13 · Transformers · PyTorch</p>
+            </div>
+          </div>
         </div>
         <div class="projects-btn" id="projects-btn">Projects</div>
       </div>
@@ -425,7 +414,8 @@ document.querySelector('#app').innerHTML = `
 `
 
 // Toggle Logic
-const contentList = document.getElementById('content-list');
+const experienceContent = document.getElementById('experience-content');
+const projectsContent = document.getElementById('projects-content');
 const toggleBtn = document.getElementById('projects-btn');
 const terminalOverlay = document.getElementById('terminal-overlay');
 let isProjectsView = false;
@@ -435,43 +425,30 @@ toggleBtn.addEventListener('click', () => {
   toggleBtn.classList.add('typing');
 
   // Show overlay
-  terminalOverlay.style.display = 'block';
+  terminalOverlay.style.display = 'flex';
   terminalOverlay.innerHTML = '';
 
   const command = isProjectsView ? "cd /tahmeedt/profile/experience" : "cd /tahmeedt/profile/projects";
 
   typeCommand(terminalOverlay, command, () => {
-    // After typing finishes... wait 1.5s
-    setTimeout(() => {
-      // 1. Hide overlay
-      terminalOverlay.style.display = 'none';
-      terminalOverlay.innerHTML = '';
+    // After typing finishes... toggle visibility
+    isProjectsView = !isProjectsView;
 
-      // 2. Fade out content
-      contentList.classList.remove('fade-in');
-      contentList.classList.add('fade-out');
+    if (isProjectsView) {
+      experienceContent.style.display = 'none';
+      projectsContent.style.display = 'flex';
+    } else {
+      projectsContent.style.display = 'none';
+      experienceContent.style.display = 'flex';
+    }
 
-      setTimeout(() => {
-        // 3. toggle state
-        isProjectsView = !isProjectsView;
+    // Update button text
+    toggleBtn.textContent = isProjectsView ? "Experience" : "Projects";
 
-        // 4. Swap content
-        if (isProjectsView) {
-          contentList.innerHTML = projectsContent;
-        } else {
-          contentList.innerHTML = experienceContent;
-        }
-
-        // 5. Fade in content
-        contentList.classList.remove('fade-out');
-        contentList.classList.add('fade-in');
-
-        // 6. Reset button text (no typing on button anymore)
-        toggleBtn.textContent = isProjectsView ? "Experience" : "Projects";
-        toggleBtn.classList.remove('typing');
-
-      }, 300); // Wait for fade out
-    }, 1500); // Wait 1.5s viewing command
+    // Hide overlay
+    terminalOverlay.style.display = 'none';
+    terminalOverlay.innerHTML = '';
+    toggleBtn.classList.remove('typing');
   });
 });
 

@@ -122,32 +122,18 @@ body {
     font-family: 'JetBrains Mono', monospace;
     font-size: clamp(0.7rem, 1.2vw, 1rem);
     color: #aaa;
-    margin-top: 12rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
     margin-top: 6rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 2rem;
-    /* Reduced generic gap since we separate content list */
 }
 
-#content-list {
+.content-view {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     gap: 3rem;
-    transition: opacity 0.3s ease;
-}
-
-.fade-in {
-    opacity: 1;
-}
-
-.fade-out {
-    opacity: 0;
 }
 
 .experience-group {
@@ -260,13 +246,21 @@ body {
 
 #terminal-overlay {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: 'JetBrains Mono', monospace;
     font-size: 2rem;
     color: #00ff88;
-    z-index: 1000;
+    z-index: 9999;
+    /* Ensure it covers everything */
+    padding: 2rem;
+    /* Add padding just in case of overflow on small screens */
     pointer-events: none;
     display: none;
     text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
