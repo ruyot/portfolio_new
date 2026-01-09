@@ -179,6 +179,15 @@ body {
     transition: color 0.3s ease;
 }
 
+.ascii-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(2px, 0.15vw, 4px);
+    line-height: 1;
+    white-space: pre;
+    overflow: hidden;
+    margin: 0;
+}
+
 .experience-ascii {
     white-space: pre;
     font-size: clamp(2px, 0.15vw, 4px);
