@@ -202,6 +202,51 @@ function scrambleText(element, targetText, duration = 2500) {
   }, 50);
 }
 
+// Function to reveal ASCII art line-by-line from top to bottom
+function revealLineByLine(element, targetText, duration = 3000) {
+  const lines = targetText.split('\n');
+  const totalLines = lines.length;
+  const startTime = Date.now();
+
+  // Extract unique characters from the target for scrambling
+  const uniqueChars = [...new Set(targetText.split('').filter(c => c !== ' ' && c !== '\n'))];
+
+  function getRandomChar() {
+    return uniqueChars[Math.floor(Math.random() * uniqueChars.length)];
+  }
+
+  function scrambleLine(line) {
+    return line.split('').map(char => {
+      if (char === ' ') return ' ';
+      return getRandomChar();
+    }).join('');
+  }
+
+  const interval = setInterval(() => {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Calculate which line should be revealed (0-indexed)
+    const revealedLineIndex = Math.floor(progress * totalLines);
+
+    // Build display: revealed lines + scrambled lines
+    const displayLines = lines.map((line, i) => {
+      if (i < revealedLineIndex) {
+        return line; // Already revealed
+      } else {
+        return scrambleLine(line); // Still scrambling
+      }
+    });
+
+    element.textContent = displayLines.join('\n');
+
+    if (progress >= 1) {
+      clearInterval(interval);
+      element.textContent = targetText;
+    }
+  }, 40); // Faster refresh for smoother glitch effect
+}
+
 
 
 // ASCII art logos for social media
@@ -459,5 +504,5 @@ const portraitElement = document.getElementById('ascii-portrait');
 // Start scramble animation for ASCII art name
 scrambleText(nameElement, asciiName, 3000);
 
-// Start scramble animation for ASCII art portrait
-scramblePortrait(portraitElement, asciiArt, 3000);
+// Start line-by-line reveal animation for ASCII art portrait
+revealLineByLine(portraitElement, asciiArt, 3000);
