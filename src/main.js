@@ -434,7 +434,10 @@ document.querySelector('#app').innerHTML = `
             </div>
           </div>
         </div>
-        <div class="projects-btn" id="projects-btn">Projects</div>
+        <div class="nav-buttons">
+          <div class="projects-btn" id="projects-btn">Projects</div>
+          <div class="projects-btn" id="competitions-btn">Competitions</div>
+        </div>
       </div>
     </div>
     
