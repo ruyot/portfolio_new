@@ -345,6 +345,26 @@ body {
     font-family: 'JetBrains Mono', monospace;
 }
 
+/* Competition Styles */
+.competition-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.competition-title {
+    text-align: right;
+    color: #ccc;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.competition-item:hover .competition-title {
+    color: #00ff88;
+}
+
 /* Social Icons (Bottom Right) */
 .social-icons {
     position: absolute;
