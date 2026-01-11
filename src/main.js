@@ -491,41 +491,46 @@ document.querySelector('#app').innerHTML = `
 // Toggle Logic
 const experienceContent = document.getElementById('experience-content');
 const projectsContent = document.getElementById('projects-content');
-const toggleBtn = document.getElementById('projects-btn');
+const competitionsContent = document.getElementById('competitions-content');
+const projectsBtn = document.getElementById('projects-btn');
+const competitionsBtn = document.getElementById('competitions-btn');
 const terminalOverlay = document.getElementById('terminal-overlay');
-let isProjectsView = false;
+let currentView = 'experience'; // 'experience', 'projects', or 'competitions'
 
-toggleBtn.addEventListener('click', () => {
-  if (toggleBtn.classList.contains('typing')) return; // Prevent clicks while active
-  toggleBtn.classList.add('typing');
+function showView(viewName) {
+  experienceContent.style.display = viewName === 'experience' ? 'flex' : 'none';
+  projectsContent.style.display = viewName === 'projects' ? 'flex' : 'none';
+  competitionsContent.style.display = viewName === 'competitions' ? 'flex' : 'none';
 
-  // Show overlay
+  // Update button text
+  projectsBtn.textContent = viewName === 'projects' ? 'Experience' : 'Projects';
+  competitionsBtn.textContent = viewName === 'competitions' ? 'Experience' : 'Competitions';
+
+  currentView = viewName;
+}
+
+function handleNavClick(targetView, btn) {
+  if (btn.classList.contains('typing')) return;
+  btn.classList.add('typing');
+
+  // If clicking same section's button, go back to experience
+  const nextView = currentView === targetView ? 'experience' : targetView;
+
   terminalOverlay.style.display = 'flex';
   terminalOverlay.innerHTML = '';
 
-  const command = isProjectsView ? "cd /tahmeedt/profile/experience" : "cd /tahmeedt/profile/projects";
+  const command = `cd /tahmeedt/profile/${nextView}`;
 
   typeCommand(terminalOverlay, command, () => {
-    // After typing finishes... toggle visibility
-    isProjectsView = !isProjectsView;
-
-    if (isProjectsView) {
-      experienceContent.style.display = 'none';
-      projectsContent.style.display = 'flex';
-    } else {
-      projectsContent.style.display = 'none';
-      experienceContent.style.display = 'flex';
-    }
-
-    // Update button text
-    toggleBtn.textContent = isProjectsView ? "Experience" : "Projects";
-
-    // Hide overlay
+    showView(nextView);
     terminalOverlay.style.display = 'none';
     terminalOverlay.innerHTML = '';
-    toggleBtn.classList.remove('typing');
+    btn.classList.remove('typing');
   });
-});
+}
+
+projectsBtn.addEventListener('click', () => handleNavClick('projects', projectsBtn));
+competitionsBtn.addEventListener('click', () => handleNavClick('competitions', competitionsBtn));
 
 // Initialize animations
 const nameElement = document.getElementById('ascii-name');
