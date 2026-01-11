@@ -434,6 +434,36 @@ document.querySelector('#app').innerHTML = `
             </div>
           </div>
         </div>
+        <div id="competitions-content" class="content-view" style="display: none;">
+          <div class="competition-item">
+            <span class="competition-title">Cal Hacks</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="competition-item">
+            <span class="competition-title">Google Cloud AI Accelerate</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="competition-item">
+            <span class="competition-title">Hack Harvard</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="competition-item">
+            <span class="competition-title">Hack The North</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="competition-item">
+            <span class="competition-title">OpenAI Open Model</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="competition-item">
+            <span class="competition-title">United Hacks V5</span>
+            <div class="logo-placeholder"></div>
+          </div>
+          <div class="competition-item">
+            <span class="competition-title">Largest Hackathon By Bolt</span>
+            <div class="logo-placeholder"></div>
+          </div>
+        </div>
         <div class="nav-buttons">
           <div class="projects-btn" id="projects-btn">Projects</div>
           <div class="projects-btn" id="competitions-btn">Competitions</div>
