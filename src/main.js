@@ -526,3 +526,36 @@ scrambleText(nameElement, asciiName, 3000);
 
 // Start line-by-line reveal animation for ASCII art portrait
 revealLineByLine(portraitElement, asciiArt, 3000);
+
+// Competition Ring Carousel
+const competitionRing = document.getElementById('competition-ring');
+const competitionItems = competitionRing.querySelectorAll('.competition-item');
+const totalItems = competitionItems.length;
+const angleStep = 360 / totalItems;
+const radius = 80; // Distance from center
+let currentRotation = 0;
+
+function positionItems() {
+  competitionItems.forEach((item, i) => {
+    const angle = (angleStep * i) + currentRotation;
+    const radian = (angle * Math.PI) / 180;
+    const x = Math.sin(radian) * radius;
+    const z = Math.cos(radian) * radius;
+    const opacity = (z + radius) / (radius * 2); // Fade based on depth
+
+    item.style.transform = `translateX(${x}px) translateZ(${z}px)`;
+    item.style.opacity = 0.3 + (opacity * 0.7);
+    item.classList.toggle('active', Math.abs(angle % 360) < angleStep / 2 || Math.abs(angle % 360) > 360 - angleStep / 2);
+  });
+}
+
+function rotateRing() {
+  currentRotation -= angleStep;
+  positionItems();
+}
+
+// Click to rotate
+competitionRing.addEventListener('click', rotateRing);
+
+// Initial positioning
+positionItems();
