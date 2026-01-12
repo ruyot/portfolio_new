@@ -532,20 +532,24 @@ const competitionRing = document.getElementById('competition-ring');
 const competitionItems = competitionRing.querySelectorAll('.competition-item');
 const totalItems = competitionItems.length;
 const angleStep = 360 / totalItems;
-const radius = 80; // Distance from center
 let currentRotation = 0;
 
 function positionItems() {
   competitionItems.forEach((item, i) => {
-    const angle = (angleStep * i) + currentRotation;
+    const angle = (angleStep * i) + currentRotation - 90; // -90 to start at top
     const radian = (angle * Math.PI) / 180;
-    const x = Math.sin(radian) * radius;
-    const z = Math.cos(radian) * radius;
-    const opacity = (z + radius) / (radius * 2); // Fade based on depth
 
-    item.style.transform = `translateX(${x}px) translateZ(${z}px)`;
-    item.style.opacity = 0.3 + (opacity * 0.7);
-    item.classList.toggle('active', Math.abs(angle % 360) < angleStep / 2 || Math.abs(angle % 360) > 360 - angleStep / 2);
+    // Position on circle circumference (50% is center, radius is 50%)
+    const x = 50 + Math.cos(radian) * 50;
+    const y = 50 + Math.sin(radian) * 50;
+
+    item.style.left = `${x}%`;
+    item.style.top = `${y}%`;
+
+    // Active item is at top (angle near 0 after -90 offset)
+    const normalizedAngle = ((angle + 90) % 360 + 360) % 360;
+    const isActive = normalizedAngle < angleStep / 2 || normalizedAngle > 360 - angleStep / 2;
+    item.classList.toggle('active', isActive);
   });
 }
 
