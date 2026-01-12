@@ -345,24 +345,43 @@ body {
     font-family: 'JetBrains Mono', monospace;
 }
 
-/* Competition Styles */
+/* Competition Carousel Styles */
+.competition-ring {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    margin: 0 auto;
+}
+
 .competition-item {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-.competition-title {
-    text-align: right;
-    color: #ccc;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    color: #666;
+    font-size: 0.85rem;
     font-weight: 300;
-    transition: color 0.3s ease;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backface-visibility: hidden;
+    transform-origin: center center;
 }
 
-.competition-item:hover .competition-title {
+.competition-item:hover {
     color: #00ff88;
+    border-color: #00ff88;
+}
+
+.competition-item.active {
+    color: #00ff88;
+    border-color: #00ff88;
+    transform: scale(1.1);
 }
 
 /* Social Icons (Bottom Right) */
