@@ -464,10 +464,7 @@ document.querySelector('#app').innerHTML = `
             <div class="logo-placeholder"></div>
           </div>
         </div>
-        <div class="nav-buttons">
-          <div class="projects-btn" id="projects-btn">Projects</div>
-          <div class="projects-btn" id="competitions-btn">Competitions</div>
-        </div>
+        <div class="projects-btn" id="nav-btn">Projects</div>
       </div>
     </div>
     
@@ -492,29 +489,39 @@ document.querySelector('#app').innerHTML = `
 const experienceContent = document.getElementById('experience-content');
 const projectsContent = document.getElementById('projects-content');
 const competitionsContent = document.getElementById('competitions-content');
-const projectsBtn = document.getElementById('projects-btn');
-const competitionsBtn = document.getElementById('competitions-btn');
+const navBtn = document.getElementById('nav-btn');
 const terminalOverlay = document.getElementById('terminal-overlay');
 let currentView = 'experience'; // 'experience', 'projects', or 'competitions'
+
+// View cycle: experience -> projects -> competitions -> experience
+const viewCycle = {
+  'experience': 'projects',
+  'projects': 'competitions',
+  'competitions': 'experience'
+};
+
+const viewLabels = {
+  'experience': 'Projects',
+  'projects': 'Competitions',
+  'competitions': 'Experience'
+};
 
 function showView(viewName) {
   experienceContent.style.display = viewName === 'experience' ? 'flex' : 'none';
   projectsContent.style.display = viewName === 'projects' ? 'flex' : 'none';
   competitionsContent.style.display = viewName === 'competitions' ? 'flex' : 'none';
 
-  // Update button text
-  projectsBtn.textContent = viewName === 'projects' ? 'Experience' : 'Projects';
-  competitionsBtn.textContent = viewName === 'competitions' ? 'Experience' : 'Competitions';
+  // Update button text to show next destination
+  navBtn.textContent = viewLabels[viewName];
 
   currentView = viewName;
 }
 
-function handleNavClick(targetView, btn) {
-  if (btn.classList.contains('typing')) return;
-  btn.classList.add('typing');
+navBtn.addEventListener('click', () => {
+  if (navBtn.classList.contains('typing')) return;
+  navBtn.classList.add('typing');
 
-  // If clicking same section's button, go back to experience
-  const nextView = currentView === targetView ? 'experience' : targetView;
+  const nextView = viewCycle[currentView];
 
   terminalOverlay.style.display = 'flex';
   terminalOverlay.innerHTML = '';
@@ -525,12 +532,9 @@ function handleNavClick(targetView, btn) {
     showView(nextView);
     terminalOverlay.style.display = 'none';
     terminalOverlay.innerHTML = '';
-    btn.classList.remove('typing');
+    navBtn.classList.remove('typing');
   });
-}
-
-projectsBtn.addEventListener('click', () => handleNavClick('projects', projectsBtn));
-competitionsBtn.addEventListener('click', () => handleNavClick('competitions', competitionsBtn));
+});
 
 // Initialize animations
 const nameElement = document.getElementById('ascii-name');
