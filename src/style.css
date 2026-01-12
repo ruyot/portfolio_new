@@ -385,15 +385,6 @@ body {
     z-index: 10;
 }
 
-/* Center nav button for competitions */
-#competitions-content {
-    align-items: center;
-}
-
-#competitions-content+.projects-btn {
-    margin: 2rem auto 0;
-}
-
 /* Social Icons (Bottom Right) */
 .social-icons {
     position: absolute;

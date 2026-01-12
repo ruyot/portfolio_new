@@ -495,6 +495,17 @@ function showView(viewName) {
   // Update button text to show next destination
   navBtn.textContent = viewLabels[viewName];
 
+  // Adjust button position for competitions view (under the ring, slightly right)
+  if (viewName === 'competitions') {
+    navBtn.style.marginTop = '2rem';
+    navBtn.style.alignSelf = 'flex-end';
+    navBtn.style.marginRight = '4rem';
+  } else {
+    navBtn.style.marginTop = '';
+    navBtn.style.alignSelf = '';
+    navBtn.style.marginRight = '';
+  }
+
   currentView = viewName;
 }
 
@@ -533,6 +544,8 @@ const competitionItems = competitionRing.querySelectorAll('.competition-item');
 const totalItems = competitionItems.length;
 const angleStep = 360 / totalItems;
 let currentRotation = 0;
+let isHovered = false;
+let autoRotateInterval;
 
 function positionItems() {
   competitionItems.forEach((item, i) => {
@@ -554,12 +567,29 @@ function positionItems() {
 }
 
 function rotateRing() {
-  currentRotation -= angleStep;
+  currentRotation -= 0.5; // Smooth continuous rotation
   positionItems();
 }
 
-// Click to rotate
-competitionRing.addEventListener('click', rotateRing);
+// Auto-rotate
+function startAutoRotate() {
+  autoRotateInterval = setInterval(() => {
+    if (!isHovered) {
+      rotateRing();
+    }
+  }, 30); // ~33fps for smooth animation
+}
 
-// Initial positioning
+// Pause on hover
+competitionRing.addEventListener('mouseenter', () => { isHovered = true; });
+competitionRing.addEventListener('mouseleave', () => { isHovered = false; });
+
+// Click to jump to next item
+competitionRing.addEventListener('click', () => {
+  currentRotation -= angleStep;
+  positionItems();
+});
+
+// Initial positioning and start animation
 positionItems();
+startAutoRotate();
