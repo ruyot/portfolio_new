@@ -521,10 +521,15 @@ navBtn.addEventListener('click', () => {
   const command = `cd /tahmeedt/profile/${nextView}`;
 
   typeCommand(terminalOverlay, command, () => {
+    // Apply changes while overlay is still visible
     showView(nextView);
-    terminalOverlay.style.display = 'none';
-    terminalOverlay.innerHTML = '';
-    navBtn.classList.remove('typing');
+
+    // Small delay to let layout settle before revealing
+    setTimeout(() => {
+      terminalOverlay.style.display = 'none';
+      terminalOverlay.innerHTML = '';
+      navBtn.classList.remove('typing');
+    }, 50);
   });
 });
 
