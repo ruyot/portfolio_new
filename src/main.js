@@ -405,17 +405,17 @@ document.querySelector('#app').innerHTML = `
         <div id="projects-content" class="content-view" style="display: none;">
           <div class="project-item">
             <div class="project-header">
-              <span class="project-title">Truthful - AI powered Cybersecurity</span>
+              <a href="https://www.minml.dev" target="_blank" rel="noopener noreferrer" class="project-title">MinML - Semantic compression systems</a>
               <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
-              <p class="project-desc">Built my own ML model to detect Real vs AI content from scratch. Trained on 100k+ frames on Google Cloud and deployed on render.</p>
-              <p class="project-stack">Python · PyTorch · CUDA · NumPy</p>
+              <p class="project-desc">Local, cross-provider token cache with safe prompt compression. Cuts LLM cost while preserving meaning.</p>
+              <p class="project-stack">Rust (PyO3) · Python 3.13 · Transformers · PyTorch</p>
             </div>
           </div>
           <div class="project-item">
             <div class="project-header">
-              <span class="project-title">GameShare - Decentralized cloud share platform</span>
+              <a href="https://gameshareit.com" target="_blank" rel="noopener noreferrer" class="project-title">GameShare - Decentralized cloud share platform</a>
               <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
@@ -425,12 +425,12 @@ document.querySelector('#app').innerHTML = `
           </div>
           <div class="project-item">
             <div class="project-header">
-              <span class="project-title">MinML - Semantic compression systems</span>
+              <a href="https://betruthful.site" target="_blank" rel="noopener noreferrer" class="project-title">Truthful - AI powered Cybersecurity</a>
               <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
-              <p class="project-desc">Local, cross-provider token cache with safe prompt compression. Cuts LLM cost while preserving meaning.</p>
-              <p class="project-stack">Rust (PyO3) · Python 3.13 · Transformers · PyTorch</p>
+              <p class="project-desc">Built my own ML model to detect Real vs AI content from scratch. Trained on 100k+ frames on Google Cloud and deployed on render.</p>
+              <p class="project-stack">Python · PyTorch · CUDA · NumPy</p>
             </div>
           </div>
         </div>
@@ -500,7 +500,7 @@ function showView(viewName) {
   if (viewName === 'competitions') {
     navBtn.style.marginTop = '2rem';
     navBtn.style.alignSelf = 'flex-end';
-    navBtn.style.marginRight = '5rem';
+    navBtn.style.marginRight = '5.3rem';
   } else {
     navBtn.style.marginTop = '';
     navBtn.style.alignSelf = '';
