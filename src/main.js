@@ -443,6 +443,7 @@ document.querySelector('#app').innerHTML = `
             <div class="competition-item" data-index="4">OpenAI Open Model</div>
             <div class="competition-item" data-index="5">United Hacks V5</div>
             <div class="competition-item" data-index="6">Bolt Hackathon</div>
+            <div class="competition-item" data-index="7">UofT Hacks</div>
           </div>
         </div>
         <div class="projects-btn" id="nav-btn">Projects</div>
