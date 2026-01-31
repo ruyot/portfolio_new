@@ -469,7 +469,7 @@ document.querySelector('#app').innerHTML = `
         <div id="projects-content" class="content-view" style="display: none;">
           <div class="project-item">
             <div class="project-header">
-              <a href="https://www.minml.dev" target="_blank" rel="noopener noreferrer" class="project-title">MinML - Semantic compression systems</a>
+              <a href="https://www.minml.dev" target="_blank" rel="noopener noreferrer" class="project-title"><pre class="ascii-tag">${projectMinML}</pre></a>
               <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
@@ -479,7 +479,7 @@ document.querySelector('#app').innerHTML = `
           </div>
           <div class="project-item">
             <div class="project-header">
-              <a href="https://gameshareit.com" target="_blank" rel="noopener noreferrer" class="project-title">GameShare - Decentralized cloud share platform</a>
+              <a href="https://gameshareit.com" target="_blank" rel="noopener noreferrer" class="project-title"><pre class="ascii-tag">${projectGameShare}</pre></a>
               <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
@@ -489,7 +489,7 @@ document.querySelector('#app').innerHTML = `
           </div>
           <div class="project-item">
             <div class="project-header">
-              <a href="https://betruthful.site" target="_blank" rel="noopener noreferrer" class="project-title">Truthful - AI powered Cybersecurity</a>
+              <a href="https://betruthful.site" target="_blank" rel="noopener noreferrer" class="project-title"><pre class="ascii-tag">${projectTruthful}</pre></a>
               <div class="logo-placeholder"></div>
             </div>
             <div class="project-details">
