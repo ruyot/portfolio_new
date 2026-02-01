@@ -1,5 +1,44 @@
 import './style.css'
 
+// Zoom level limiter - only allows zoom out once, then back to default
+let zoomLevel = 0;
+const MAX_ZOOM = 0;  // Can't zoom in past default
+const MIN_ZOOM = -1; // Can zoom out once
+
+document.addEventListener('keydown', (e) => {
+  // Check for Cmd/Ctrl + Plus or Minus
+  if ((e.metaKey || e.ctrlKey) && (e.key === '=' || e.key === '+')) {
+    if (zoomLevel >= MAX_ZOOM) {
+      e.preventDefault();
+      return;
+    }
+    zoomLevel++;
+  } else if ((e.metaKey || e.ctrlKey) && e.key === '-') {
+    if (zoomLevel <= MIN_ZOOM) {
+      e.preventDefault();
+      return;
+    }
+    zoomLevel--;
+  } else if ((e.metaKey || e.ctrlKey) && e.key === '0') {
+    zoomLevel = 0;
+  }
+});
+
+// Also handle mouse wheel zoom
+document.addEventListener('wheel', (e) => {
+  if (e.ctrlKey || e.metaKey) {
+    if (e.deltaY < 0 && zoomLevel >= MAX_ZOOM) {
+      e.preventDefault();
+    } else if (e.deltaY > 0 && zoomLevel <= MIN_ZOOM) {
+      e.preventDefault();
+    } else if (e.deltaY < 0) {
+      zoomLevel++;
+    } else if (e.deltaY > 0) {
+      zoomLevel--;
+    }
+  }
+}, { passive: false });
+
 // ASCII art portrait - from left_design_2.txt
 const asciiArt = `
                                .:==+#+:.                                                            
