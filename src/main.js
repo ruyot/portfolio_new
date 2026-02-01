@@ -1,9 +1,9 @@
 import './style.css'
 
-// Zoom level limiter - only allows zoom out once, then back to default
+// Zoom level limiter - completely blocks browser zoom
 let zoomLevel = 0;
-const MAX_ZOOM = 0;  // Can't zoom in past default
-const MIN_ZOOM = -1; // Can zoom out once
+const MAX_ZOOM = 0;  // No zoom in allowed
+const MIN_ZOOM = 0;  // No zoom out allowed
 
 document.addEventListener('keydown', (e) => {
   // Check for Cmd/Ctrl + Plus or Minus
@@ -601,9 +601,9 @@ function showView(viewName) {
 
   // Adjust button position for competitions view (under the ring, above GitHub logo)
   if (viewName === 'competitions') {
-    navBtn.style.marginTop = '2rem';
+    navBtn.style.marginTop = '-13rem';
     navBtn.style.alignSelf = 'flex-end';
-    navBtn.style.marginRight = '5.3rem';
+    navBtn.style.marginRight = '-1rem';
   } else {
     navBtn.style.marginTop = '';
     navBtn.style.alignSelf = '';
