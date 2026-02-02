@@ -599,9 +599,8 @@ function showView(viewName) {
   // Update button text to show next destination
   navBtn.textContent = viewLabels[viewName];
 
-  // Adjust button position for competitions view (under the ring, above GitHub logo)
   if (viewName === 'competitions') {
-    navBtn.style.marginTop = '-13rem';
+    navBtn.style.marginTop = '-13.5rem';
     navBtn.style.alignSelf = 'flex-end';
     navBtn.style.marginRight = '-1rem';
   } else {
