@@ -290,7 +290,7 @@ html {
 }
 
 #terminal-overlay .cursor {
-    background-color: #fff;
+    background-color: #00ff88;
     height: 1em;
     width: 10px;
 }
