@@ -433,8 +433,8 @@ html {
 
 /* Small logo size for Mail and LinkedIn */
 .social-logo-small {
-    font-size: clamp(0.09rem, 0.175vw, 0.14rem);
-    line-height: 0.8;
+    font-size: clamp(0.12rem, 0.22vw, 0.18rem);
+    line-height: 1;
 }
 
 .social-icon:hover .social-logo {
