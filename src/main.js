@@ -147,13 +147,6 @@ const asciiArt = `
                 .+===----+++=.   ..+..............::=+++====---=*#.::......:::::::.....:====%%*-=*-.
                  :+===--===+-.    .-*.::::::...:.:::::----:::::=**=.........::.:::.....::::==--=*=. .`
 
-// ASCII characters for scramble effect
-const ASCII_CHARS = '!@#$%^&*()_+-=[]{}|;:,.<>?/~\\x60ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-// Function to generate random ASCII character
-function randomChar() {
-  return ASCII_CHARS[Math.floor(Math.random() * ASCII_CHARS.length)];
-}
 
 // ASCII art name design
 const asciiName = `    .....                                                                               ..       
@@ -174,7 +167,7 @@ X~     \`?888888hx~       u     \`888E        .888: x888  x888.       .u        
 
 // Function to type command like terminal
 function typeCommand(element, text, callback) {
-  element.innerHTML = ''; // Clear text
+  element.innerHTML = '';
   let i = 0;
 
   // Create cursor element
@@ -186,12 +179,12 @@ function typeCommand(element, text, callback) {
     if (i < text.length) {
       cursor.before(text.charAt(i));
       i++;
-      setTimeout(typeChar, 30 + Math.random() * 30); // Random typing speed
+      setTimeout(typeChar, 30 + Math.random() * 30);
     } else {
       setTimeout(() => {
         element.removeChild(cursor); // Remove cursor when done
         if (callback) callback();
-      }, 100); // Quick finish
+      }, 100);
     }
   }
 
