@@ -600,9 +600,18 @@ function showView(viewName) {
   navBtn.textContent = viewLabels[viewName];
 
   if (viewName === 'competitions') {
-    navBtn.style.marginTop = '-13.5rem';
-    navBtn.style.alignSelf = 'flex-end';
-    navBtn.style.marginRight = '-1rem';
+    // Check if mobile (768px or less)
+    const isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+      // Reset positioning for mobile - CSS handles layout
+      navBtn.style.marginTop = '';
+      navBtn.style.alignSelf = '';
+      navBtn.style.marginRight = '';
+    } else {
+      navBtn.style.marginTop = '-13.5rem';
+      navBtn.style.alignSelf = 'flex-end';
+      navBtn.style.marginRight = '-1rem';
+    }
   } else {
     navBtn.style.marginTop = '';
     navBtn.style.alignSelf = '';
