@@ -1,0 +1,10 @@
+/* Main CSS - Imports all style modules */
+@import "tailwindcss";
+
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+@import "./animations.css";
+@import "./social.css";
+@import "./competitions.css";
+@import "./responsive.css";

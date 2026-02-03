@@ -1,0 +1,28 @@
+/* Base - Global styles, resets, body */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: #00ff88;
+    color: #000;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+    overflow: hidden;
+    min-height: 100vh;
+    touch-action: pan-x pan-y;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+html {
+    touch-action: manipulation;
+    zoom: 0.9;
+}

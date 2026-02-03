@@ -1,0 +1,119 @@
+/* Components - Buttons, cursor, terminal overlay, projects */
+
+.nav-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.projects-btn {
+    margin-top: 0.5rem;
+    color: #888;
+    font-size: 0.9em;
+    border: 1px solid #444;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    cursor: default;
+    transition: all 0.3s ease;
+    min-width: 120px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.projects-btn:hover {
+    border-color: #666;
+    color: #ccc;
+}
+
+.cursor {
+    display: inline-block;
+    width: 6px;
+    height: 1.2em;
+    background-color: #00ff88;
+    vertical-align: text-bottom;
+    animation: blink 1s step-end infinite;
+    margin-left: 2px;
+}
+
+#terminal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 2rem;
+    color: #00ff88;
+    z-index: 9999;
+    padding: 2rem;
+    pointer-events: none;
+    display: none;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+#terminal-overlay .cursor {
+    background-color: #00ff88;
+    height: 1em;
+    width: 10px;
+}
+
+/* Projects */
+.project-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.project-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+}
+
+.project-title {
+    text-align: right;
+    color: #ccc;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.project-item:hover .project-title {
+    color: #00ff88;
+}
+
+.project-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-right: 36px;
+    transition: all 0.4s ease;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.project-item:hover .project-details {
+    max-height: 10em;
+    opacity: 1;
+    margin-top: 0.3rem;
+}
+
+.project-desc {
+    font-size: 0.8em;
+    color: #aaa;
+    max-width: 400px;
+    line-height: 1.4;
+}
+
+.project-stack {
+    font-size: 0.75em;
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+}

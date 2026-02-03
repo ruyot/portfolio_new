@@ -1,4 +1,4 @@
-import './style.css'
+import './styles/main.css'
 import './zoomControl.js'
 import { typeCommand, scrambleText, revealLineByLine } from './animations.js'
 import { initViewToggle } from './viewToggle.js'

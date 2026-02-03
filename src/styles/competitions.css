@@ -1,0 +1,41 @@
+/* Competition Carousel Styles */
+
+.competition-ring {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    margin-right: 12rem;
+    margin-top: 0rem;
+    border: 2px solid #444;
+    border-radius: 50%;
+}
+
+.competition-item {
+    position: absolute;
+    padding: 0.4rem 0.8rem;
+    text-align: center;
+    color: #888;
+    font-size: 0.7rem;
+    font-weight: 300;
+    background: #000;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    white-space: nowrap;
+    transform: translate(-50%, -50%);
+}
+
+.competition-item:hover {
+    color: #00ff88;
+    border-color: #00ff88;
+    transform: translate(-50%, -50%) scale(1.15);
+    z-index: 20;
+}
+
+.competition-item.active {
+    color: #00ff88;
+    border-color: #00ff88;
+    font-size: 0.85rem;
+    z-index: 10;
+}

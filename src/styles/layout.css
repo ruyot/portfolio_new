@@ -1,0 +1,134 @@
+/* Layout - ASCII art, header, containers */
+
+.ascii-art {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.35rem, 0.8vw, 0.6rem);
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+    white-space: pre;
+    color: #fff;
+}
+
+.signature {
+    font-family: 'Caveat', cursive;
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 600;
+    color: #fff;
+}
+
+.signature-container {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.ascii-header {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    text-align: right;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.ascii-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.5rem, 1vw, 0.8rem);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: #fff;
+    margin: 0;
+    white-space: pre;
+}
+
+.experience-container {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(0.7rem, 1.2vw, 1rem);
+    color: #aaa;
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2rem;
+}
+
+.content-view {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3rem;
+}
+
+.experience-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.experience-line {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.experience-group:hover .experience-line .experience-text {
+    color: #00ff88;
+}
+
+.experience-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    color: #888;
+    font-size: 0.85em;
+    margin-right: 36px;
+    transition: all 0.4s ease;
+    text-align: right;
+}
+
+.experience-group:hover .experience-details {
+    max-height: 2em;
+    opacity: 1;
+    margin-top: 0.3rem;
+}
+
+.experience-text {
+    text-align: right;
+    color: #ccc;
+    font-weight: 300;
+    transition: color 0.3s ease;
+}
+
+.ascii-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(2px, 0.15vw, 4px);
+    line-height: 1;
+    white-space: pre;
+    overflow: hidden;
+    margin: 0;
+}
+
+.experience-ascii {
+    white-space: pre;
+    font-size: clamp(2px, 0.15vw, 4px);
+    line-height: 1;
+    overflow: hidden;
+}
+
+.logo-placeholder {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+    flex-shrink: 0;
+    color: #666;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 300;
+}
+
+.logo-placeholder::before {
+    content: '<';
+}
