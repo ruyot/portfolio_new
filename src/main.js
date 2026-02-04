@@ -387,7 +387,7 @@ document.querySelector('#app').innerHTML = `
             <div class="competition-item" data-index="1">Google Cloud AI</div>
             <div class="competition-item" data-index="2">Hack Harvard</div>
             <div class="competition-item" data-index="3">Hack The North</div>
-            <div class="competition-item" data-index="4">OpenAI Open Model</div>
+            <div class="competition-item" data-index="4">OAI Open Model</div>
             <div class="competition-item" data-index="5">United Hacks V5</div>
             <div class="competition-item" data-index="6">Bolt Hackathon</div>
             <div class="competition-item" data-index="7">UofT Hacks</div>
