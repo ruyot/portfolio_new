@@ -4,133 +4,159 @@
 
     body {
         overflow-x: hidden;
-        overflow-y: auto;
+        overflow-y: hidden;
     }
 
     main {
         flex-direction: column !important;
-        padding: 1rem !important;
-        height: auto !important;
+        padding: 0 !important;
+        height: 100vh !important;
         min-height: 100vh;
-        gap: 1.5rem;
-        align-items: center !important;
+        max-height: 100vh;
+        gap: 0;
+        align-items: flex-start !important;
+        position: relative;
+        overflow: hidden;
     }
 
+    /* ASCII Portrait - Large, bottom-left, spanning most of screen */
     .ascii-fade-in {
         order: 1;
-        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        top: auto;
+        width: auto;
+        max-width: 85vw;
         display: flex;
-        justify-content: center;
-        max-width: 100vw;
+        justify-content: flex-start;
+        align-items: flex-end;
         overflow: hidden;
+        z-index: 1;
     }
 
     .ascii-art {
-        font-size: clamp(0.1rem, 0.35vw, 0.25rem);
-        max-width: 95vw;
+        font-size: clamp(0.2rem, 0.6vw, 0.45rem);
+        max-width: 85vw;
         overflow: hidden;
     }
 
+    /* Name, projects, info section - Top right */
     .ascii-header {
-        position: relative !important;
-        top: auto !important;
-        right: auto !important;
+        position: fixed !important;
+        top: 1rem !important;
+        right: 1rem !important;
+        left: auto !important;
+        bottom: auto !important;
         order: 2;
-        width: 100%;
-        align-items: center !important;
-        text-align: center;
+        width: auto;
+        max-width: 45vw;
+        align-items: flex-end !important;
+        text-align: right;
+        z-index: 10;
     }
 
     .ascii-name {
-        font-size: clamp(0.15rem, 0.8vw, 0.35rem);
-        max-width: 90vw;
+        font-size: clamp(0.12rem, 0.6vw, 0.3rem);
+        max-width: 45vw;
         overflow: hidden;
     }
 
     .right-content {
         order: 3;
         width: 100%;
-        align-items: center !important;
+        align-items: flex-end !important;
     }
 
     .experience-container {
-        align-items: center !important;
-        margin-top: 1rem;
+        align-items: flex-end !important;
+        margin-top: 0.5rem;
         width: 100%;
     }
 
     .experience-group,
     .experience-line {
-        align-items: center !important;
-        justify-content: center;
+        align-items: flex-end !important;
+        justify-content: flex-end;
         flex-direction: column;
     }
 
     .ascii-tag {
-        font-size: clamp(1px, 0.08vw, 2px);
-        max-width: 90vw;
+        font-size: clamp(0.8px, 0.06vw, 1.5px);
+        max-width: 45vw;
         overflow: hidden;
     }
 
     .experience-details,
     .project-details {
-        text-align: center;
+        text-align: right;
         margin-right: 0;
+        font-size: 0.6rem;
     }
 
     #projects-content {
-        align-items: center !important;
+        align-items: flex-end !important;
     }
 
     .project-item {
-        align-items: center;
+        align-items: flex-end;
         width: 100%;
     }
 
     .project-header {
-        justify-content: center;
+        justify-content: flex-end;
         flex-direction: column;
+        align-items: flex-end;
     }
 
     .project-title {
-        text-align: center;
+        text-align: right;
     }
 
     .competition-ring {
-        width: 250px;
-        height: 250px;
-        margin: 0 auto;
+        width: 150px;
+        height: 150px;
+        margin: 0;
+        margin-left: auto;
     }
 
     .competition-item {
-        font-size: 0.55rem;
-        padding: 0.25rem 0.5rem;
+        font-size: 0.45rem;
+        padding: 0.15rem 0.35rem;
     }
 
     .projects-btn {
-        align-self: center !important;
+        align-self: flex-end !important;
         margin-right: 0 !important;
-        margin-top: 1rem !important;
+        margin-top: 0.5rem !important;
         position: relative !important;
+        font-size: 0.7rem;
+        padding: 0.3rem 0.8rem;
     }
 
+    /* Social icons - Bottom right */
     .social-icons {
-        position: relative !important;
-        bottom: auto !important;
-        right: auto !important;
+        position: fixed !important;
+        bottom: 1rem !important;
+        right: 1rem !important;
+        left: auto !important;
+        top: auto !important;
         order: 4;
-        width: 100%;
-        justify-content: center;
-        padding: 1.5rem 0;
+        width: auto;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        padding: 0;
         gap: 0.5rem;
+        z-index: 10;
     }
 
     .social-logo {
-        font-size: clamp(0.1rem, 0.2vw, 0.16rem);
+        font-size: clamp(0.08rem, 0.15vw, 0.12rem);
     }
 
     .social-logo-small {
-        font-size: clamp(0.08rem, 0.15vw, 0.12rem);
+        font-size: clamp(0.06rem, 0.12vw, 0.1rem);
     }
 
     #terminal-overlay {
