@@ -17,12 +17,6 @@ body {
     font-family: 'JetBrains Mono', monospace;
     overflow: hidden;
     min-height: 100vh;
-    touch-action: pan-x pan-y;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
-}
-
-html {
-    touch-action: manipulation;
-    zoom: 0.9;
 }

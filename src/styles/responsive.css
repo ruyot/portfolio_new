@@ -1,9 +1,6 @@
 /* Responsive - Media queries */
 
 @media (max-width: 768px) {
-    html {
-        zoom: 1;
-    }
 
     body {
         overflow-x: hidden;

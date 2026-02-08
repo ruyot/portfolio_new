@@ -1,5 +1,5 @@
 import './styles/main.css'
-import './zoomControl.js'
+// zoomControl.js removed - zoom restrictions lifted
 import { typeCommand, scrambleText, revealLineByLine } from './animations.js'
 import { initViewToggle } from './viewToggle.js'
 import { initCompetitionRing } from './competitionRing.js'
