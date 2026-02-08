@@ -42,8 +42,8 @@
     }
 
     .ascii-name {
-        font-size: clamp(0.5rem, 2.5vw, 1rem);
-        max-width: 95vw;
+        font-size: clamp(0.15rem, 0.8vw, 0.35rem);
+        max-width: 90vw;
         overflow: hidden;
     }
 
